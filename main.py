@@ -59,14 +59,14 @@ class Robot(AlexaGadget):
 
         # determine which command to be executed
         control_type = payload['type']
-        if control_type == 'OpenClaw':
+        if control_type == 'Go':
             # get the source and destination states for this command
             src_state = State[payload['state']]
             self.motors_claw.on(20)
             time.sleep(2)
             self.motors_claw.off(brake=True)
 
-        elif control_type == 'CloseClaw':
+        elif control_type == 'Back':
             # get the source and destination states for this command
             src_state = State[payload['state']]
             self.motors_claw.on(-20)
@@ -75,7 +75,7 @@ class Robot(AlexaGadget):
 
           
 
-        elif control_type == 'ClawUp':
+        elif control_type == 'Left':
             # get the source and destination states for this command
             src_state = State[payload['state']]
             self.motors_hand.on(20)
@@ -84,7 +84,7 @@ class Robot(AlexaGadget):
 
           
 
-        elif control_type == 'ClawDown':
+        elif control_type == 'Right':
             # get the source and destination states for this command
             src_state = State[payload['state']]
             self.motors_hand.on(-20)
@@ -92,7 +92,7 @@ class Robot(AlexaGadget):
             self.motors_hand.off(brake=True)
 
           
-        elif control_type == 'ClawDance':
+        elif control_type == 'Turn':
             # get the source and destination states for this command
             src_state = State[payload['state']]
             while(danceflag == 1):
